@@ -12,3 +12,7 @@ body {
     padding-bottom: 50px;
     padding-left: 30px;
   }
+
+.column{
+    column-count: 2;
+  }
