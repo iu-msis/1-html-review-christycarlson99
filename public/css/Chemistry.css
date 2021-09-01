@@ -6,3 +6,9 @@
     background-color: #e4e4e4;
     padding: 25px;
     }
+body {
+    padding-top: 5px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 30px;
+    }
