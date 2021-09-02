@@ -1,11 +1,32 @@
 .navbar {
-    margin-bottom: 10;
-    border-radius: 1;
+    margin-bottom: 0;
+    border-radius: 0;
     }
     footer {
     background-color: #e4e4e4;
     padding: 25px;
     }
+body {
+    padding-top: 5px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 30px;
+    background-color: beige;
+    text-decoration-color: blue;
+    
+  }
+h1{
+    color:blueviolet;
+}
+h2{
+  color:chartreuse;
+}
+a{
+  color:darkgoldenrod;
+}
+.column{
+    column-count: 2;
+  }
     
 table {
     border-collapse: collapse;
@@ -20,13 +41,6 @@ word-wrap: break-word;
 text-align: center;
 vertical-align: middle;
 }
-
-body {
-    padding-top: 5px;
-    padding-right: 30px;
-    padding-bottom: 50px;
-    padding-left: 30px;
-    }
 
     /* References */
     /* https://www.w3docs.com/snippets/css/how-to-wrap-the-content-of-a-table-cell.html Wrapping text in table */

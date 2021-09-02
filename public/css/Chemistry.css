@@ -11,4 +11,19 @@ body {
     padding-right: 30px;
     padding-bottom: 50px;
     padding-left: 30px;
-    }
+    background-color: beige;
+    text-decoration-color: blue;
+    
+  }
+h1{
+    color:blueviolet;
+}
+h2{
+  color:chartreuse;
+}
+a{
+  color:darkgoldenrod;
+}
+.column{
+    column-count: 2;
+  }
