@@ -24,10 +24,7 @@ h2{
 a{
   color:darkgoldenrod;
 }
-.column{
-    column-count: 2;
-  }
-    
+
 table {
     border-collapse: collapse;
     table-layout: fixed;
