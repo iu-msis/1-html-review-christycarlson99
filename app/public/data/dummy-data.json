@@ -1,5 +1,5 @@
-{"offers": 
-    [
+{
+    "offers": [
         {
             "id": 1,
             "name": "Jane Student",
@@ -10,11 +10,11 @@
         },
         {
             "id": 2,
-            "name": "Joe Student",
+            "name": "Jordan Student",
             "offer": 87000,
-            "bonus": 9000,
-            "company": "PwC",
-            "offerDate": "2021-10-23"
+            "bonus": 3000,
+            "company": "IU",
+            "offerDate": "2021-09-25"
         }
     ]
 }
