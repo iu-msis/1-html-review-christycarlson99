@@ -27,7 +27,7 @@
 
     <body>
         <h2>Books I Love</h2><br>
-        <table>
+        <table id = "sortTable">
             <tr>
               <th>Image</th>
               <th>Book Title</th>
@@ -125,6 +125,12 @@
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
 
+
+      <script src="js/tablesort.min.js"></script>  <!-- Structure -->      
+      <script>
+        // https://github.com/tristen/tablesort
+        new Tablesort(document.getElementById('sortTable'));
+      </script>
     </body>
     <!-- References -->
     <!-- https://www.amazon.com/gp/bookseries/B00CJG28U8/ Book Prices -->
