@@ -1,9 +1,10 @@
 const Offer = {
     data() {
       return {
-        counter: 0
+        "dummy": "message",
+        "total": 5
       }
     }
   }
   
-  Vue.createApp(Offer).mount('#counter')
+  Vue.createApp(Offer).mount('#offerApp')
