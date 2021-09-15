@@ -1,6 +1,7 @@
 const Offer = {
     data() {
       return {
+        "person": {},
         "offers": [
                 {
                     "id": 1,
@@ -20,7 +21,39 @@ const Offer = {
                 }
             ]
         }
+    },
+
+    created() {
+      fetch('https://randomuser.me/api/')
+      .then(response => response.json()) //response is parameter =>
+      .then((parsedJson) => {
+        console.log(parsedJson); //checks data - debugger lite
+        this.person = parsedJson.results[0]
+      })
+      .catch(err => {
+        console.error(err)
+      })
+
     }
   }
   
 Vue.createApp(Offer).mount('#offerApp');
+
+//created is an event hook - function called after vue application created 
+//don't need to name function
+//then is the promise object
+//response returns the promise object
+//this. refers to the current object 
+
+//LONG WAY TO CREATE FUNCTION
+// created() {
+//   fetch('https://randomuser.me/api/')
+//   .then(function(response){
+//     response.json() 
+//   }) 
+//   .then(function (parseddJson) {
+
+//   })
+//   .catch(errFunc) 
+
+// }
