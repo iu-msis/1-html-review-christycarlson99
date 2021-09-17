@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Charlotte Bagels Website</title>
+    <title>Random User Website</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> <!-- Bootstrap css link -->
     <link rel="stylesheet" href="css/Index.css">
     <script src="https://unpkg.com/vue@next"></script> 
@@ -39,10 +39,11 @@
  
     
 
-    <div id="offerApp">
-      <!-- <a v-bind:img src="person.picture.medium">{{person.picture.medium}}</a>
-      <a v-bind:href="person.picture.medium">{{person.picture.medium}}</a> -->
-        <!-- <img src={{person.picture.medium}} alt="Charlie Bagels"></a> -->
+    <div id="result">
+      <a :href="person.picture.medium"> 
+        <img :src="person.picture.medium" alt="">
+      </a>
+
 
       <table class="table">
         <tbody>
@@ -62,9 +63,8 @@
           </tr>
         </tbody>
       </table>
-
+      
     </div>
-    
   </body>
 
   <script src="js/index.js"></script>

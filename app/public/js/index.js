@@ -1,4 +1,4 @@
-const Offer = {
+const Person = {
     data() {
       return {
         "person": {},
@@ -37,7 +37,7 @@ const Offer = {
     }
   }
   
-Vue.createApp(Offer).mount('#offerApp');
+Vue.createApp(Person).mount('#result');
 
 //created is an event hook - function called after vue application created 
 //don't need to name function
