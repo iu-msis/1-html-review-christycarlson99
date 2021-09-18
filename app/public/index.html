@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Random User Website</title>
+    <title>Charlotte Bagels Website</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> <!-- Bootstrap css link -->
     <link rel="stylesheet" href="css/Index.css">
     <script src="https://unpkg.com/vue@next"></script> 
@@ -36,14 +36,10 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus urna neque viverra justo nec ultrices. Sed arcu non odio euismod lacinia. Porttitor lacus luctus accumsan tortor posuere ac ut consequat semper. Rutrum quisque non tellus orci. Ullamcorper morbi tincidunt ornare massa eget egestas purus. Vitae suscipit tellus mauris a diam maecenas. Dictum sit amet justo donec enim diam vulputate ut. Eget aliquet nibh praesent tristique magna. Amet mauris commodo quis imperdiet. Non curabitur gravida arcu ac tortor dignissim. Non enim praesent elementum facilisis. Vel pharetra vel turpis nunc eget. Risus nec feugiat in fermentum posuere urna. Id interdum velit laoreet id donec ultrices tincidunt arcu non. Sed viverra tellus in hac. Id diam maecenas ultricies mi eget mauris pharetra et.
       </p>
 
- 
-    
-
-    <div id="result">
+    <div id="results">
       <a :href="person.picture.medium"> 
         <img :src="person.picture.medium" alt="">
       </a>
-
 
       <table class="table">
         <tbody>
@@ -58,7 +54,7 @@
               <td><a v-bind:href="'mailto:'+person.email">{{person.email}}</td>
               <td>{{person.name.first}} {{person.name.last}}</td>
               <td>{{person.location.country}}</td>
-              <td>{{person.dob.date}}</td>
+              <td>{{dob}}</td>
               <td>{{person.registered.age}}</td>
           </tr>
         </tbody>

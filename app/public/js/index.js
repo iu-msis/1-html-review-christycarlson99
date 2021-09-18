@@ -1,26 +1,8 @@
-const Person = {
+const Offer = {
     data() {
       return {
         "person": {},
-        "offers": [
-                {
-                    "id": 1,
-                    "name": "Jane Student",
-                    "offer": 100000,
-                    "bonus": 9000,
-                    "company": "EY",
-                    "offerDate": "2021-10-05"
-                },
-                {
-                    "id": 2,
-                    "name": "Jordan Student",
-                    "offer": 87000,
-                    "bonus": 3000,
-                    "company": "IU",
-                    "offerDate": "2021-09-25"
-                }
-            ]
-        }
+      }
     },
 
     created() {
@@ -29,6 +11,7 @@ const Person = {
       .then((parsedJson) => {
         console.log(parsedJson); //checks data - debugger lite
         this.person = parsedJson.results[0]
+        this.dob = this.person.dob.date[5] + this.person.dob.date[6] + this.person.dob.date[7] + this.person.dob.date[8] + this.person.dob.date[9] + this.person.dob.date[4] +this.person.dob.date[0] + this.person.dob.date[1] +this.person.dob.date[2] +this.person.dob.date[3]
       })
       .catch(err => {
         console.error(err)
@@ -37,7 +20,7 @@ const Person = {
     }
   }
   
-Vue.createApp(Person).mount('#result');
+Vue.createApp(Offer).mount('#results');
 
 //created is an event hook - function called after vue application created 
 //don't need to name function
