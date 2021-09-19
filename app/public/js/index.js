@@ -1,4 +1,4 @@
-const Offer = {
+const app = {
     data() {
       return {
         "person": {},
@@ -17,10 +17,17 @@ const Offer = {
         console.error(err)
       })
 
+    },
+
+    methods: {
+      refreshPage(){
+        window.location.reload();
+      }
+
     }
   }
   
-Vue.createApp(Offer).mount('#results');
+Vue.createApp(app).mount('#results');
 
 //created is an event hook - function called after vue application created 
 //don't need to name function
