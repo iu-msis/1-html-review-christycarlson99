@@ -2,29 +2,38 @@
 <html>
   <head>
     <title>Charlotte Bagels Website</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> <!-- Bootstrap css link -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> Bootstrap css link -->
     <link rel="stylesheet" href="css/Index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script src="https://unpkg.com/vue@next"></script> 
   </head>
 
-  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="Index.html">Home</a></li>
-          <li><a href="AboutMe.html">About Me</a></li>
-          <li><a href="Reading.html">Book Collection</a></li> 
+      <a class="navbar-brand" href="#">RandomWebsite</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="AboutMe.html">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Reading.html">Book Collection</a>
+          </li>
         </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
       </div>
     </div>
-  </nav> 
+  </nav>
+
 
   <body>
     <h1>Welcome To My Page</h1>
@@ -42,26 +51,31 @@
       </a>
 
       <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Email</th>
+            <th scope="col">User</th>
+            <th scope="col">Country of Origin</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Age</th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
-            <th>Email</th>
-            <th>User</th>
-            <th>Country of Origin</th>
-            <th>Birthday</th>
-            <th>Age</th>
-          </tr>
-          <tr>
-              <td><a v-bind:href="'mailto:'+person.email">{{person.email}}</td>
-              <td>{{person.name.first}} {{person.name.last}}</td>
-              <td>{{person.location.country}}</td>
-              <td>{{dob}}</td>
-              <td>{{person.registered.age}}</td>
+            <th scope="row"><a v-bind:href="'mailto:'+person.email">{{person.email}}</th>
+            <td>{{person.name.first}} {{person.name.last}}</td>
+            <td>{{person.location.country}}</td>
+            <td>{{dob}}</td>
+            <td>{{person.registered.age}}</td>
           </tr>
         </tbody>
       </table>
       
 
-      <button @click="refreshPage">Refresh</button>"
+      <!-- <button @click="refreshPage">Refresh</button> -->
+      <form v-on: submit="fetchUserData">
+        <button type="submit">Refresh</button>
+      </form>
     </div>
   </body>
 
