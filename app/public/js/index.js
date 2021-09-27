@@ -1,44 +1,49 @@
 const app = {
-    data() {
-      return {
-        "person": {},
-      }
-    },
-
-    // computed: {
-    //   prettyBirthday() {
-    //     return this.person.dob.date;
-    //   }
-    // },
-
-    methods: {
-      refreshPage(){
-        window.location.reload();
+  data() {
+    return {
+      "person": {
+        name: {},
+        dob: {},
+        picture: {},
+        location: {}
       },
-      
-      fetchUserData() {
-        fetch('https://randomuser.me/api/')
-        .then(response => response.json()) //response is parameter =>
-        .then((parsedJson) => {
-          console.log(parsedJson); //checks data - debugger lite
-          this.person = parsedJson.results[0]
-          this.dob = this.person.dob.date[5] + this.person.dob.date[6] + this.person.dob.date[7] + this.person.dob.date[8] + this.person.dob.date[9] + this.person.dob.date[4] +this.person.dob.date[0] + this.person.dob.date[1] +this.person.dob.date[2] +this.person.dob.date[3]
-        })
-        .catch(err => {
-          console.error(err)
-        })
+    }
+  },
 
-      }
+  // computed: {
+  //   prettyBirthday() {
+  //     return this.person.dob.date;
+  //   }
+  // },
 
+  methods: {
+    refreshPage(){
+      window.location.reload();
     },
-
-    // created() {
-    //   this.fetchUserData();
-    // }
-
     
+    fetchUserData() {
+      fetch('https://randomuser.me/api/')
+      .then(response => response.json()) //response is parameter =>
+      .then((parsedJson) => {
+        console.log(parsedJson); //checks data - debugger lite
+        this.person = parsedJson.results[0]
+        this.dob = this.person.dob.date[5] + this.person.dob.date[6] + this.person.dob.date[7] + this.person.dob.date[8] + this.person.dob.date[9] + this.person.dob.date[4] +this.person.dob.date[0] + this.person.dob.date[1] +this.person.dob.date[2] +this.person.dob.date[3]
+      })
+      .catch(err => {
+        console.error(err)
+      })
+
+    }
+
+  },
+
+  created() {
+    this.fetchUserData();
   }
+
   
+}
+
 Vue.createApp(app).mount('#results');
 
 //created is an event hook - function called after vue application created 
