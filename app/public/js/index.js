@@ -5,7 +5,9 @@ const app = {
         name: {},
         dob: {},
         picture: {},
-        location: {}
+        location: {},
+        email: {},
+        registered: {}
       },
     }
   },
