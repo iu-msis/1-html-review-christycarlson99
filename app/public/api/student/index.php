@@ -2,11 +2,6 @@
 // require 'common.php';
 require 'class/dBConnection.php';
 
-echo ":::";
-// print_R($_ENV);
-echo getenv('MYSQL_DATABASE');
-
-
 // Step 1: Get a datase connection from our helper class
 $db = DbConnection::getConnection();
 

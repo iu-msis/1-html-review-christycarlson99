@@ -1,49 +1,60 @@
 const app = {
   data() {
     return {
-      "person": {
-        name: {},
-        dob: {},
-        picture: {},
-        location: {},
-        email: {},
-        registered: {}
-      },
+      students: [],
+      selectedStudent: null,
+      offers: []
     }
   },
-
-  // computed: {
-  //   prettyBirthday() {
-  //     return this.person.dob.date;
-  //   }
-  // },
-
+  computed: {},
   methods: {
-    refreshPage(){
-      window.location.reload();
-    },
-    
-    fetchUserData() {
-      fetch('https://randomuser.me/api/')
-      .then(response => response.json()) //response is parameter =>
-      .then((parsedJson) => {
-        console.log(parsedJson); //checks data - debugger lite
-        this.person = parsedJson.results[0]
-        this.dob = this.person.dob.date[5] + this.person.dob.date[6] + this.person.dob.date[7] + this.person.dob.date[8] + this.person.dob.date[9] + this.person.dob.date[4] +this.person.dob.date[0] + this.person.dob.date[1] +this.person.dob.date[2] +this.person.dob.date[3]
-      })
-      .catch(err => {
-        console.error(err)
-      })
-
-    }
-
+      prettyData(d) {
+          return dayjs(d)
+          .format('D MMM YYYY')
+      },
+      prettyDollar(n) {
+          const d = new Intl.NumberFormat("en-US").format(n);
+          return "$ " + d;
+      },
+      selectStudent(s) {
+          if (s == this.selectedStudent) {
+              return;
+          }
+          this.selectedStudent = s;
+          this.offers = [];
+          this.fetchOfferData(this.selectedStudent);
+      },
+      fetchStudentData() {
+          fetch('/api/student/')
+          .then( response => response.json() )
+          .then( (responseJson) => {
+              console.log(responseJson);
+              this.students = responseJson;
+          })
+          .catch( (err) => {
+              console.error(err);
+          })
+      },
+      fetchOfferData(s) {
+          console.log("Fetching offer data for ", s);
+          fetch('/api/offer/?student=' + s.id)
+          .then( response => response.json() )
+          .then( (responseJson) => {
+              console.log(responseJson);
+              this.offers = responseJson;
+          })
+          .catch( (err) => {
+              console.error(err);
+          })
+          .catch( (error) => {
+              console.error(error);
+          });
+      }
   },
-
   created() {
-    this.fetchUserData();
+      this.fetchStudentData();
   }
 
-  
 }
 
 Vue.createApp(app).mount('#results');
