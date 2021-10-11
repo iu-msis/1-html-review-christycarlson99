@@ -14,7 +14,7 @@ try {
     exit;
 }
 
-require("class/dBConnection.php");
+require("class/DbConnection.php");
 
 // Step 0: Validate the incoming data
 // This code doesn't do that, but should ...
