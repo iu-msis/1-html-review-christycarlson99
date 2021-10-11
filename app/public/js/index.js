@@ -86,8 +86,6 @@ const app = {
             this.offerForm = {};
           });
       }
-
-      
   },
   created() {
       this.fetchBookData();
@@ -97,24 +95,5 @@ const app = {
 }
 
 Vue.createApp(app).mount('#results');
-
-//created is an event hook - function called after vue application created 
-//don't need to name function
-//then is the promise object
-//response returns the promise object
-//this. refers to the current object 
-
-//LONG WAY TO CREATE FUNCTION
-// created() {
-//   fetch('https://randomuser.me/api/')
-//   .then(function(response){
-//     response.json() 
-//   }) 
-//   .then(function (parseddJson) {
-
-//   })
-//   .catch(errFunc) 
-
-// }
 
 // Resources : https://stackoverflow.com/questions/62975890/how-to-reload-refresh-a-webpage-in-vue-js-after-a-certain-event-or-a-button-is-c
