@@ -8,10 +8,19 @@ const app = {
       books: [],
       bookForm: {},
       selectedBook: null,
+      selectedOffer: null
     }
   },
   computed: {},
   methods: {
+      prettyData(d) {
+        return dayjs(d)
+        .format('D MMM YYYY')
+      },
+      prettyDollar(n) {
+          const d = new Intl.NumberFormat("en-US").format(n);
+          return "$ " + d;
+      },
       selectStudent(s) {
           if (s == this.selectedStudent) {
               return;
@@ -31,52 +40,6 @@ const app = {
               console.error(err);
           })
       },
-      selectBook(b) {
-        if (b == this.selectedBook) {
-            return;
-        }
-        this.selectedBook = b;
-        this.books = [];
-        this.fetchBookData(this.selectedBook);
-    },
-
-      fetchBookData(b) {
-        console.log("Fetching book data for ", b);
-        fetch('/api/book/?book=' + b.id)
-        .then( response => response.json() )
-          .then( (responseJson) => {
-              console.log(responseJson);
-              this.books = responseJson;
-          })
-          .catch( (err) => {
-              console.error(err);
-          })
-          .catch( (error) => {
-              console.error(error);
-          });
-      },
-      postNewBook(evt) {
-        this.bookForm.id = this.selectedBook.id;        
-        console.log("Posting:", this.bookForm);
-        // alert("Posting!");
-
-        fetch('api/book/create.php', {
-            method:'POST',
-            body: JSON.stringify(this.bookForm),
-            headers: {
-              "Content-Type": "application/json; charset=utf-8"
-            }
-          })
-          .then( response => response.json() )
-          .then( json => {
-            console.log("Returned from post:", json);
-            // TODO: test a result was returned!
-            this.books = json;
-            
-            // reset the form
-            this.bookForm = {};
-          });
-      },
       fetchOfferData(s) {
           console.log("Fetching offer data for ", s);
           fetch('/api/offer/?student=' + s.id)
@@ -94,8 +57,7 @@ const app = {
       },
       postNewOffer(evt) {
         this.offerForm.studentId = this.selectedStudent.id;        
-        console.log("Posting:", this.offerForm);
-        // alert("Posting!");
+        console.log("Creating:", this.offerForm);
 
         fetch('api/offer/create.php', {
             method:'POST',
@@ -113,13 +75,51 @@ const app = {
             // reset the form
             this.offerForm = {};
           });
+      },
+      postOffer(evt){
+
+        if(this.selectedOffer){
+          this.postEditOffer(evt);
+        }
+        else{
+          this.postNewOffer(evt);
+        }
+      },
+      postEditOffer(evt){
+        this.offerForm.id = this.selectedOffer.id;
+        this.offerForm.studentId = this.selectedStudent.id;        
+        console.log("Editing:", this.offerForm);
+        // alert("Posting!");
+
+        fetch('api/offer/udpate.php', {
+            method:'POST',
+            body: JSON.stringify(this.offerForm),
+            headers: {
+              "Content-Type": "application/json; charset=utf-8"
+            }
+          })
+          .then( response => response.json() )
+          .then( json => {
+            console.log("Returned from post:", json);
+            // TODO: test a result was returned!
+            this.offers = json;
+            
+            // reset the form
+            this.handleResetEdit = {};
+          });
+      },
+      handleEditOffer(offer){
+        this.selectedOffer = offer;
+        this.offerForm = Object.assign({},this.selectedOffer);
+      },
+      handleResetEdit(){
+        this.selectedOffer = null;
+        this.offerForm = {};
       }
       
   },
   created() {
-
       this.fetchStudentData();
-      this.fetchBookData();
   }
 
 }
