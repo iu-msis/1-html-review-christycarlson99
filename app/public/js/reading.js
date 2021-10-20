@@ -3,14 +3,14 @@ const app1 = {
     return {
       books: [],
       bookForm: {},
-      selectedBook: null,
+      selectedBook: null
 
     }
   },
   computed: {},
   methods: {
       fetchBookData(b) {
-        fetch('/api/book/')
+        fetch('/api/book/index.php')
         .then( response => response.json() )
           .then( (responseJson) => {
               console.log(responseJson);
@@ -20,9 +20,8 @@ const app1 = {
               console.error(err);
           })
       },
-      postNewBook(evt) {       
-        console.log("Posting:", this.bookForm);
-        // alert("Posting!");
+      postNewBook(evt) {     
+        console.log("Creating:", this.bookForm);
 
         fetch('api/book/create.php', {
             method:'POST',
@@ -41,7 +40,6 @@ const app1 = {
             this.bookForm = {};
           });
       }
-      
   },
   created() {
       this.fetchBookData();
