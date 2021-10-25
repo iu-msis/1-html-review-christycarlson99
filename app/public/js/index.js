@@ -103,6 +103,9 @@ const app = {
             
             // reset the form
             this.handleResetEdit = {};
+          })
+          .catch( err => {
+            alert("Something went wrong.");
           });
       },
       postDeleteOffer(o) {  
