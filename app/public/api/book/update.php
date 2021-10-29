@@ -35,21 +35,20 @@ $stmt = $db->prepare(
     title = ?,
     author = ?,
     year = ?,
-    publsher = ?
+    publisher = ?
     pageCount = ?,
     MSRP = ?
   WHERE id = ?'
 );
 
 $stmt->execute([
-  $_POST['id'],
   $_POST['title'],
   $_POST['author'],
   $_POST['year'],
   $_POST['publisher'],
   $_POST['pageCount'],
-  $_POST['MSRP']
-
+  $_POST['MSRP'],
+  $_POST['id']
 ]);
 
 // Get auto-generated PK from DB
@@ -60,4 +59,4 @@ $stmt->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other');
-header('Location: ../book/?book=' . $_POST['id']);
+header('Location: ../book/index.php' . $_POST['id']);
